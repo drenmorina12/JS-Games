@@ -6,10 +6,7 @@ const squares = []
 const numberOfSquares = 9
 
 let result = 0
-
-
-
-
+let hitPosition
 
 
 function createBoard(){
@@ -23,19 +20,30 @@ function createBoard(){
 }
 
 createBoard()
-console.log(squares)
 
 function randomSquare(){
     squares.forEach(square => {
         square.classList.remove('mole')
     })
 
-    let randomPosition = squares[Math.floor(Math.random() * numberOfSquares)]
-    console.log(randomPosition)
-
-
-
-
+    let randomSquare = squares[Math.floor(Math.random() * numberOfSquares)]
+    randomSquare.classList.add('mole')
+    hitPosition = randomSquare.id
 }
 
-randomSquare()
+squares.forEach(square => {
+    square.addEventListener('click', () => {
+        if(square.id == hitPosition)
+        result ++
+        score.textContent = result
+        hitPosition = null
+    })
+})
+
+
+function moveMole() {
+    let timerId = null
+    timerId = setInterval(randomSquare, 500)
+}
+
+moveMole()
