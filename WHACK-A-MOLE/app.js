@@ -1,5 +1,4 @@
 const gridDisplay = document.querySelector('.grid')
-// const mole = document.querySelector('mole')
 const timeLeft = document.querySelector('#time-left')
 const score = document.querySelector('#score')
 const playButton = document.querySelector('.play-game')
@@ -12,7 +11,7 @@ timeLeft.textContent = currentTime
 let result = 0
 let hitPosition
 let timerId = null
-let countDownTimerId
+let countDownTimerId = null
 
 function createBoard(){
     for (let i = 0; i < numberOfSquares; i++){
@@ -53,8 +52,6 @@ function moveMole(){
 
 
 
-moveMole()
-
 function showNotification(message){
     notification.textContent = message
     notification.style.display = 'block'
@@ -67,40 +64,34 @@ function showNotification(message){
 
 function countDown(){
     currentTime --
-
+    console.log('COUNTING DOWN')
     if (currentTime <= 0){
         timeLeft.textContent = currentTime
         clearInterval(countDownTimerId)
-
+        hitPosition = null
         clearInterval(timerId)
         showNotification("Game Over! Your final socre is " + result)
+        console.log('IT STOPPED')
         // setTimeout(function () {
         //     alert("Game Over! Your final score is " + result);
         // }, 100)
         return
     }
     timeLeft.textContent = currentTime
+
+
+function playGame(){
+    clearInterval(timerId)
+    clearInterval(countDownTimerId)
+    console.log('moveMole')
+    moveMole()
+    console.log('countDown')
+
+    countDownTimerId = setInterval(countDown, 1000)
+    result = 0
+    currentTime = 10
+    timeLeft.textContent = currentTime
+    score.textContent = result
 }
-countDownTimerId = setInterval(countDown, 1000)
-// function playGame(){
-//     console.log('moveMole')
-//     moveMole()
-//     console.log('countDown')
 
-//     setInterval(countDown, 1000)
-//     result = 0
-//     currentTime = 10
-//     timeLeft.textContent = currentTime
-//     score.textContent = result
-// }
-
-// playButton.addEventListener('click', playGame)
-
-// playButton.addEventListener('click', moveMole)
-// playButton.addEventListener('click', function() {
-//     countDownTimerId = setInterval(countDown, 1000)
-//     result = 0
-//     currentTime = 10
-//     timeLeft.textContent = currentTime
-//     score.textContent = result
-// })
+playButton.addEventListener('click', playGame)
