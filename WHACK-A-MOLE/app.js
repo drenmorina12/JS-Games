@@ -5,8 +5,10 @@ const score = document.querySelector('#score')
 const squares = []
 const numberOfSquares = 9
 
+let currentTime = 10
 let result = 0
 let hitPosition
+let timerId = null
 
 
 function createBoard(){
@@ -41,9 +43,24 @@ squares.forEach(square => {
 })
 
 
-function moveMole() {
-    let timerId = null
+function moveMole(){
+
     timerId = setInterval(randomSquare, 500)
 }
 
 moveMole()
+
+function countDown(){
+    currentTime --
+
+    if (currentTime < 0){
+        clearInterval(countDownTimerId)
+        alert("Game Over! Your final score is " + result)
+        clearInterval(timerId)
+        return
+    }
+    timeLeft.textContent = currentTime
+
+}
+
+let countDownTimerId = setInterval(countDown, 1000)
