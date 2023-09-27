@@ -3,6 +3,7 @@ const gridDisplay = document.querySelector('.grid')
 const timeLeft = document.querySelector('#time-left')
 const score = document.querySelector('#score')
 const playButton = document.querySelector('.play-game')
+const notification = document.querySelector('#notification')
 const squares = []
 const numberOfSquares = 9
 
@@ -54,6 +55,15 @@ function moveMole(){
 
 moveMole()
 
+function showNotification(message){
+    notification.textContent = message
+    notification.style.display = 'block'
+
+    setTimeout(() => {
+        notification.style.display = 'none'
+    }, 3000)
+}
+
 
 function countDown(){
     currentTime --
@@ -63,9 +73,10 @@ function countDown(){
         clearInterval(countDownTimerId)
 
         clearInterval(timerId)
-        setTimeout(function () {
-            alert("Game Over! Your final score is " + result);
-        }, 100)
+        showNotification("Game Over! Your final socre is " + result)
+        // setTimeout(function () {
+        //     alert("Game Over! Your final score is " + result);
+        // }, 100)
         return
     }
     timeLeft.textContent = currentTime
