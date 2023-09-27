@@ -1,15 +1,17 @@
 const gridDisplay = document.querySelector('.grid')
-const mole = document.querySelector('mole')
+// const mole = document.querySelector('mole')
 const timeLeft = document.querySelector('#time-left')
 const score = document.querySelector('#score')
+const playButton = document.querySelector('.play-game')
 const squares = []
 const numberOfSquares = 9
 
 let currentTime = 10
+timeLeft.textContent = currentTime
 let result = 0
 let hitPosition
 let timerId = null
-
+let countDownTimerId
 
 function createBoard(){
     for (let i = 0; i < numberOfSquares; i++){
@@ -48,19 +50,46 @@ function moveMole(){
     timerId = setInterval(randomSquare, 500)
 }
 
+
+
 moveMole()
+
 
 function countDown(){
     currentTime --
 
-    if (currentTime < 0){
+    if (currentTime <= 0){
+        timeLeft.textContent = currentTime
         clearInterval(countDownTimerId)
-        alert("Game Over! Your final score is " + result)
+
         clearInterval(timerId)
+        setTimeout(function () {
+            alert("Game Over! Your final score is " + result);
+        }, 100)
         return
     }
     timeLeft.textContent = currentTime
-
 }
+countDownTimerId = setInterval(countDown, 1000)
+// function playGame(){
+//     console.log('moveMole')
+//     moveMole()
+//     console.log('countDown')
 
-let countDownTimerId = setInterval(countDown, 1000)
+//     setInterval(countDown, 1000)
+//     result = 0
+//     currentTime = 10
+//     timeLeft.textContent = currentTime
+//     score.textContent = result
+// }
+
+// playButton.addEventListener('click', playGame)
+
+// playButton.addEventListener('click', moveMole)
+// playButton.addEventListener('click', function() {
+//     countDownTimerId = setInterval(countDown, 1000)
+//     result = 0
+//     currentTime = 10
+//     timeLeft.textContent = currentTime
+//     score.textContent = result
+// })
