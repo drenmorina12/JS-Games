@@ -4,17 +4,20 @@ const score = document.querySelector('#score')
 const playButton = document.querySelector('.play-game')
 const notification = document.querySelector('#notification')
 const squares = []
-const numberOfSquares = 9
+const NUMBER_OF_SQUARES = 9
+const MOLE_INTERVAL = 500
+const TIME_INTERVAL = 1000
+const INITIAL_TIME = 10
 
-let currentTime = 10
-timeLeft.textContent = currentTime
+let currentTime = INITIAL_TIME
 let result = 0
 let hitPosition
 let timerId = null
 let countDownTimerId = null
+timeLeft.textContent = currentTime
 
 function createBoard(){
-    for (let i = 0; i < numberOfSquares; i++){
+    for (let i = 0; i < NUMBER_OF_SQUARES; i++){
         const square = document.createElement('div')
         square.setAttribute('class', 'square')
         square.setAttribute('id', i+1)
@@ -29,28 +32,27 @@ function randomSquare(){
     squares.forEach(square => {
         square.classList.remove('mole')
     })
-
-    let randomSquare = squares[Math.floor(Math.random() * numberOfSquares)]
+    let randomSquare = squares[Math.floor(Math.random() * NUMBER_OF_SQUARES)]
     randomSquare.classList.add('mole')
     hitPosition = randomSquare.id
+
 }
-
-squares.forEach(square => {
-    square.addEventListener('click', () => {
-        if(square.id == hitPosition)
-        result ++
-        score.textContent = result
-        hitPosition = null
-    })
-})
-
 
 function moveMole(){
-
-    timerId = setInterval(randomSquare, 500)
+    timerId = setInterval(randomSquare, MOLE_INTERVAL)
 }
 
+function updateScore(){
+    result++
+    score.textContent = result
+    hitPosition = null
+}
 
+function gameOver(){
+    clearInterval(countDownTimerId)
+    hitPosition = null
+    clearInterval(timerId)
+}
 
 function showNotification(message){
     notification.textContent = message
@@ -64,34 +66,36 @@ function showNotification(message){
 
 function countDown(){
     currentTime --
-    console.log('COUNTING DOWN')
     if (currentTime <= 0){
         timeLeft.textContent = currentTime
-        clearInterval(countDownTimerId)
-        hitPosition = null
-        clearInterval(timerId)
-        showNotification("Game Over! Your final socre is " + result)
-        console.log('IT STOPPED')
+        showNotification("Game Over! Your final score is " + result)
+        gameOver()
         // setTimeout(function () {
         //     alert("Game Over! Your final score is " + result);
         // }, 100)
         return
     }
     timeLeft.textContent = currentTime
-
+}
 
 function playGame(){
-    clearInterval(timerId)
-    clearInterval(countDownTimerId)
-    console.log('moveMole')
+    gameOver()
     moveMole()
-    console.log('countDown')
-
-    countDownTimerId = setInterval(countDown, 1000)
+    countDownTimerId = setInterval(countDown, TIME_INTERVAL)
     result = 0
-    currentTime = 10
+    currentTime = INITIAL_TIME
     timeLeft.textContent = currentTime
     score.textContent = result
 }
 
+squares.forEach(square => {
+    square.addEventListener('click', () => {
+        if(square.id == hitPosition){
+            updateScore()
+        }
+
+    })
+})
+
 playButton.addEventListener('click', playGame)
+
