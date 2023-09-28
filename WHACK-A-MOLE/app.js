@@ -5,9 +5,10 @@ const playButton = document.querySelector('.play-game')
 const notification = document.querySelector('#notification')
 const squares = []
 const NUMBER_OF_SQUARES = 9
-const MOLE_INTERVAL = 500
+const MOLE_INTERVAL = 1000 - 0.1
 const TIME_INTERVAL = 1000
-const INITIAL_TIME = 10
+const INITIAL_TIME = 15
+const MAX_SCORE = Math.floor(TIME_INTERVAL/MOLE_INTERVAL * INITIAL_TIME - 1)
 
 let currentTime = INITIAL_TIME
 let result = 0
@@ -15,6 +16,8 @@ let hitPosition
 let timerId = null
 let countDownTimerId = null
 timeLeft.textContent = currentTime
+
+score.textContent = (result + '/' + MAX_SCORE)
 
 function createBoard(){
     for (let i = 0; i < NUMBER_OF_SQUARES; i++){
@@ -26,7 +29,7 @@ function createBoard(){
     }
 }
 
-createBoard()
+
 
 function randomSquare(){
     squares.forEach(square => {
@@ -44,7 +47,7 @@ function moveMole(){
 
 function updateScore(){
     result++
-    score.textContent = result
+    score.textContent = (result + '/' + MAX_SCORE)
     hitPosition = null
 }
 
@@ -85,8 +88,10 @@ function playGame(){
     result = 0
     currentTime = INITIAL_TIME
     timeLeft.textContent = currentTime
-    score.textContent = result
+    score.textContent = (result + '/' + MAX_SCORE)
 }
+
+createBoard()
 
 squares.forEach(square => {
     square.addEventListener('click', () => {
