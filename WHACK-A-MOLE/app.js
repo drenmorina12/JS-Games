@@ -98,4 +98,3 @@ squares.forEach(square => {
 })
 
 playButton.addEventListener('click', playGame)
-
