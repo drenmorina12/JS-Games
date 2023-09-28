@@ -90,4 +90,14 @@ div {
 
 .options {
     flex: 2.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.option {
+    height: 100px;
+    width: 100px;
+    border: dotted black  1px;
 }
