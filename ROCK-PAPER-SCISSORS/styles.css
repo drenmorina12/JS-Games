@@ -31,7 +31,7 @@ div {
     flex-direction: column;
 }
 
-h1 {
+.side-text {
     text-align: center;
     flex: 1;
 }
@@ -60,6 +60,27 @@ h1 {
 
 .result-display {
     flex: 8;
+    display: flex;
+}
+
+.player,
+.computer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.player-choice,
+.computer-choice {
+    flex: 4;
+}
+
+.player-name,
+.player-status,
+.computer-name,
+.computer-status {
+    flex: 1;
+    text-align: center;
 }
 
 .options {
