@@ -5,7 +5,7 @@ const playButton = document.querySelector('.play-game')
 const notification = document.querySelector('#notification')
 const squares = []
 const NUMBER_OF_SQUARES = 9
-const MOLE_INTERVAL = 1000 - 0.1
+const MOLE_INTERVAL = 500
 const TIME_INTERVAL = 1000
 const INITIAL_TIME = 15
 const MAX_SCORE = Math.floor(TIME_INTERVAL/MOLE_INTERVAL * INITIAL_TIME - 1)
@@ -23,7 +23,7 @@ function createBoard(){
     for (let i = 0; i < NUMBER_OF_SQUARES; i++){
         const square = document.createElement('div')
         square.setAttribute('class', 'square')
-        square.setAttribute('id', i+1)
+        square.setAttribute('id', i)
         gridDisplay.append(square)
         squares.push(square)
     }
@@ -71,6 +71,7 @@ function countDown(){
     currentTime --
     if (currentTime <= 0){
         timeLeft.textContent = currentTime
+        squares[hitPosition].classList.remove('mole')
         showNotification("Game Over! Your final score is " + result)
         gameOver()
         // setTimeout(function () {
@@ -96,6 +97,7 @@ createBoard()
 squares.forEach(square => {
     square.addEventListener('click', () => {
         if(square.id == hitPosition){
+            squares[hitPosition].classList.remove('mole')
             updateScore()
         }
 

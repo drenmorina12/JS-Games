@@ -18,7 +18,8 @@ body {
 }
 
 .mole {
-    background-color: blue;
+    background-image: url('mole.jpg');
+    background-size: cover;
 }
 
 .play-game {
