@@ -1,0 +1,67 @@
+/* html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+} */
+
+div {
+    border: solid black 1px;
+    /* height: 500px; */
+}
+
+#container {
+    display: flex;
+    justify-content: space-between;
+    height: 500px;
+    margin-top: 50px;
+}
+
+#container {
+    display: flex;
+    justify-content: space-between;
+    height: 600px;
+    margin-top: 50px;
+}
+
+.player-side,
+.computer-side {
+    flex: 3; /* Each side div takes up 3 units of the available space */
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    flex: 1;
+}
+
+.result-boxes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 8;
+    gap: 30px;
+}
+
+.result-box {
+    border: dotted black 1px;
+    height: 100px;
+    width: 100px;
+    
+}
+
+.main {
+    flex: 10; /* The main div takes up 4 units of the available space */
+    display: flex;
+    flex-direction: column;
+}
+
+.result-display {
+    flex: 8;
+}
+
+.options {
+    flex: 2.5;
+}
