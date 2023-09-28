@@ -1,0 +1,21 @@
+#container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.game {
+    margin-top: 50px;
+    width: 300px;
+    height: 300px;
+    border: solid black 1px;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+
+.game-title {
+    text-align: center;
+}
