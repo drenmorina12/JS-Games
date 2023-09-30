@@ -59,12 +59,15 @@ function getResult() {
 }
 
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
+    const clickedOption = e.target.closest('.option')
 
-    playerChoice = e.target.id
-    playerColor = playerChoice
-    generateComputerChoice()
-    getResult()
-    colorDistinction()
-    playerAttributes()
-    computerAttributes()
+    if(clickedOption){
+        playerChoice = clickedOption.id
+        playerColor = playerChoice
+        generateComputerChoice()
+        getResult()
+        colorDistinction()
+        playerAttributes()
+        computerAttributes()
+    }
 }))
