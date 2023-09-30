@@ -77,7 +77,12 @@ div {
     height: 200px;
     width: 200px;
     margin: auto;
+}
 
+.player-img,
+.computer-img {
+    height: 100%;
+    width: 100%;
 }
 
 .player-name,

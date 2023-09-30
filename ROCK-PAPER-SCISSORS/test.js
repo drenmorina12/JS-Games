@@ -17,10 +17,12 @@ console.log(possibleChoices)
 
 function playerAttributes() {
     playerChoiceImg.setAttribute('src', 'images/' + playerColor + '.png')
+    playerChoiceImg.classList.add('player-img')
 }
 
 function computerAttributes() {
     computerChoiceImg.setAttribute('src', ('images/' + computerColor + '.png'))
+    computerChoiceImg.classList.add('computer-img')
 }
 
 
