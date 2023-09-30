@@ -2,60 +2,85 @@ const playerChoiceDisplay = document.querySelector('.player-choice')
 const computerChoiceDisplay = document.querySelector('.computer-choice')
 const possibleChoices = document.querySelectorAll('.option')
 
+
 let playerChoice
-let computerChoice
-let result
 let playerMove
+let playerColor
+let result
+let computerChoice
 let computerMove
+let computerColor
 
 console.log(possibleChoices)
 
-possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
-    playerChoice = e.target.id
+function playerAttributes() {
     playerMove = document.createElement('img')
     playerMove.setAttribute('id', playerChoice)
-    playerMove.setAttribute('src', 'images/' + playerChoice + '.png')
+    console.log('Player: ' + 'images/' + playerColor + '.png')
+    playerMove.setAttribute('src', 'images/' + playerColor + '.png')
     playerChoiceDisplay.append(playerMove)
-    generateComputerChoice()
+}
 
-}))
+function computerAttributes() {
+    computerMove = document.createElement('img')
+    computerMove.setAttribute('id', computerChoice)
+    console.log('Computer: ' + 'images/' + computerColor + '.png')
+    computerMove.setAttribute('src', ('images/' + computerColor + '.png'))
+    computerChoiceDisplay.append(computerMove)
+}
 
 
 function generateComputerChoice() {
     const randomChoice = possibleChoices[Math.floor(Math.random() * possibleChoices.length)].id
     computerChoice = randomChoice
-    computerMove = document.createElement('img')
-    computerMove.setAttribute('id', computerChoice)
-    computerMove.setAttribute('src', ('images/' + computerChoice + '.png'))
-    // computerMove.setAttribute('src', 'images/paper.png')
-    computerChoiceDisplay.append(computerMove)
-    // display computer choice
-    console.log('suiii')
+    console.log('Computer choice is: ' + computerChoice)
+    computerColor = computerChoice
+}
+
+function colorDistinction(){
+    if (result == 'win'){
+        playerColor += '-green'
+        computerColor += '-red'
+    }
+    else if (result == 'lose'){
+        playerColor += '-red'
+        computerColor += '-green'
+    }
 }
 
 function getResult() {
     if (computerChoice === playerChoice){
-        result = "It's a Draw"
+        result = "draw"
     }
 
     else if (computerChoice === 'rock' && playerChoice === 'paper'){
-        result = "You won"
+        result = "win"
     }
-
-
 
     else if (computerChoice === 'paper' && playerChoice === 'scissors'){
-        result = "You won"
+        result = "win"
     }
 
-
-
     else if (computerChoice === 'scissors' && playerChoice === 'rock'){
-        result = "You won"
+        result = "win"
     }
 
     else
-        result = "You lose"
- 
-    resultDisplay.innerHTML = result
+        result = "lose"
+    // resultDisplay.innerHTML = result
 }
+
+possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
+
+    playerChoice = e.target.id
+    console.log('Player choice is: ' + playerChoice)
+    playerColor = playerChoice
+    generateComputerChoice()
+    getResult()
+    console.log('Result is: ' + result)
+    colorDistinction()
+    console.log('Player color is: ' + playerColor)
+    console.log('Computer color is: ' + computerColor)
+    playerAttributes()
+    computerAttributes()
+}))
