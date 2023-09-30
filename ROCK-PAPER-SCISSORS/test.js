@@ -2,18 +2,12 @@ const possibleChoices = document.querySelectorAll('.option')
 const playerChoiceImg = document.querySelector('.player-choice-img')
 const computerChoiceImg = document.querySelector('.computer-choice-img')
 
-
 let playerChoice
-let playerMove
 let playerColor
 let result
 let computerChoice
-let computerMove
 let computerColor
 
-
-
-console.log(possibleChoices)
 
 function playerAttributes() {
     playerChoiceImg.setAttribute('src', 'images/' + playerColor + '.png')
@@ -29,7 +23,6 @@ function computerAttributes() {
 function generateComputerChoice() {
     const randomChoice = possibleChoices[Math.floor(Math.random() * possibleChoices.length)].id
     computerChoice = randomChoice
-    console.log('Computer choice is: ' + computerChoice)
     computerColor = computerChoice
 }
 
@@ -68,14 +61,10 @@ function getResult() {
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
 
     playerChoice = e.target.id
-    console.log('Player choice is: ' + playerChoice)
     playerColor = playerChoice
     generateComputerChoice()
     getResult()
-    console.log('Result is: ' + result)
     colorDistinction()
-    console.log('Player color is: ' + playerColor)
-    console.log('Computer color is: ' + computerColor)
     playerAttributes()
     computerAttributes()
 }))
