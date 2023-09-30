@@ -1,6 +1,6 @@
-const playerChoiceDisplay = document.querySelector('.player-choice')
-const computerChoiceDisplay = document.querySelector('.computer-choice')
 const possibleChoices = document.querySelectorAll('.option')
+const playerChoiceImg = document.querySelector('.player-choice-img')
+const computerChoiceImg = document.querySelector('.computer-choice-img')
 
 
 let playerChoice
@@ -11,22 +11,16 @@ let computerChoice
 let computerMove
 let computerColor
 
+
+
 console.log(possibleChoices)
 
 function playerAttributes() {
-    playerMove = document.createElement('img')
-    playerMove.setAttribute('id', playerChoice)
-    console.log('Player: ' + 'images/' + playerColor + '.png')
-    playerMove.setAttribute('src', 'images/' + playerColor + '.png')
-    playerChoiceDisplay.append(playerMove)
+    playerChoiceImg.setAttribute('src', 'images/' + playerColor + '.png')
 }
 
 function computerAttributes() {
-    computerMove = document.createElement('img')
-    computerMove.setAttribute('id', computerChoice)
-    console.log('Computer: ' + 'images/' + computerColor + '.png')
-    computerMove.setAttribute('src', ('images/' + computerColor + '.png'))
-    computerChoiceDisplay.append(computerMove)
+    computerChoiceImg.setAttribute('src', ('images/' + computerColor + '.png'))
 }
 
 
@@ -67,7 +61,6 @@ function getResult() {
 
     else
         result = "lose"
-    // resultDisplay.innerHTML = result
 }
 
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
