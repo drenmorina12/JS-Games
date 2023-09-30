@@ -9,13 +9,57 @@
 </head>
 <body>
 
-	<h2>Computer Choice: <span id="computer-choice"></span></h2>
-	<h2>Player Choice: <span id="player-choice"></span></h2>
-	<h2>Result: <span id="result"></span></h2>
+    <div id="container">
+        <div class="player-side">
+            <h1 class="side-text">Player</h1>
+            <div class="result-boxes">
+                <div class="result-box">1</div>
+                <div class="result-box">2</div>
+                <div class="result-box">3</div>
+            </div>
+            <h1 class="side-text">Win/Lose: </h1>
+        </div>
 
-	<button id="rock">rock</button>
-	<button id="paper">paper</button>
-	<button id="scissors">scissors</button>
+        <div class="main">
+            <div class="result-display">
+                <div class="player">
+                    <h1 class="player-name">Player</h1>
+                    <div class="player-choice">
+                        <img class="player-choice-img">
+                    </div>
+                    <h2 class="player-status">WON/LOST</h2>
+                </div>
+                <div class="computer">
+                    <h1 class="computer-name">Computer</h1>
+                    <div class="computer-choice">
+                        <img class="computer-choice-img">
+                    </div>
+                    <h2 class="computer-status">WON/LOST</h2>
+                </div>
+            </div>
+            <div class="options">
+                <div id="rock" class="option">
+                    <img src="images/rock.png">
+                </div>
+                <div id="paper" class="option">
+                    <img src="images/paper.png">
+                </div>
+                <div id='scissors' class="option">
+                    <img src="images/scissors.png">
+                </div>
+            </div>
+        </div>
+
+        <div class="computer-side">
+            <h1 class="side-text">Computer</h1>
+            <div class="result-boxes">
+                <div class="result-box">1</div>
+                <div class="result-box">2</div>
+                <div class="result-box">3</div>
+            </div>
+            <h1 class="side-text">Win/Lose: </h1>
+        </div>
+    </div>
 
 	<script src="app.js" charset="utf-8"></script>
 </body>

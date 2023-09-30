@@ -1,50 +1,73 @@
-const computerChoiceDisplay = document.getElementById('computer-choice')
-const playerChoiceDisplay = document.getElementById('player-choice')
-const resultDisplay = document.getElementById('result')
-const possibleChoices = document.querySelectorAll('button')
+const possibleChoices = document.querySelectorAll('.option')
+const playerChoiceImg = document.querySelector('.player-choice-img')
+const computerChoiceImg = document.querySelector('.computer-choice-img')
 
 let playerChoice
-let computerChoice
+let playerColor
 let result
+let computerChoice
+let computerColor
 
-possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
-    playerChoice = e.target.id
-    playerChoiceDisplay.innerHTML = playerChoice
-    generateComputerChoice()
-    getResult()
-}))
+
+function playerAttributes() {
+    playerChoiceImg.setAttribute('src', 'images/' + playerColor + '.png')
+    playerChoiceImg.classList.add('player-img')
+}
+
+function computerAttributes() {
+    computerChoiceImg.setAttribute('src', ('images/' + computerColor + '.png'))
+    computerChoiceImg.classList.add('computer-img')
+}
+
 
 function generateComputerChoice() {
-
     const randomChoice = possibleChoices[Math.floor(Math.random() * possibleChoices.length)].id
     computerChoice = randomChoice
+    computerColor = computerChoice
+}
 
-    computerChoiceDisplay.innerHTML = computerChoice
+function colorDistinction(){
+    if (result == 'win'){
+        playerColor += '-green'
+        computerColor += '-red'
+    }
+    else if (result == 'lose'){
+        playerColor += '-red'
+        computerColor += '-green'
+    }
 }
 
 function getResult() {
     if (computerChoice === playerChoice){
-        result = "It's a Draw"
+        result = "draw"
     }
 
     else if (computerChoice === 'rock' && playerChoice === 'paper'){
-        result = "You won"
+        result = "win"
     }
-
-
 
     else if (computerChoice === 'paper' && playerChoice === 'scissors'){
-        result = "You won"
+        result = "win"
     }
 
-
-
     else if (computerChoice === 'scissors' && playerChoice === 'rock'){
-        result = "You won"
+        result = "win"
     }
 
     else
-        result = "You lose"
- 
-    resultDisplay.innerHTML = result
+        result = "lose"
 }
+
+possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
+    const clickedOption = e.target.closest('.option')
+
+    if(clickedOption){
+        playerChoice = clickedOption.id
+        playerColor = playerChoice
+        generateComputerChoice()
+        getResult()
+        colorDistinction()
+        playerAttributes()
+        computerAttributes()
+    }
+}))

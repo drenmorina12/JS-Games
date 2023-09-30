@@ -84,11 +84,10 @@ img {
     margin: auto;
 }
 
-/* .player-img,
+
 .computer-img {
-    height: 100%;
-    width: 100%;
-} */
+    transform: scaleX(-1);
+}
 
 .player-name,
 .player-status,
@@ -110,4 +109,9 @@ img {
     height: 100px;
     width: 100px;
     border: dotted black  1px;
+}
+
+.option:hover {
+    cursor: pointer;
+    opacity: .7;
 }
