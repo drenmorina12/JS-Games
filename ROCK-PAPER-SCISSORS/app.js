@@ -1,14 +1,20 @@
 const possibleChoices = document.querySelectorAll('.option')
 const playerChoiceImg = document.querySelector('.player-choice-img')
 const computerChoiceImg = document.querySelector('.computer-choice-img')
+const ROUNDS = 3
 
 let playerChoice
 let playerColor
 let result
 let computerChoice
 let computerColor
-let gameScore
+
 let round = 1
+let playerRound = 0
+let computerRound = 0
+let playerScore = 0
+let computerScore = 0
+
 
 
 function playerAttributes() {
@@ -68,17 +74,45 @@ function updateResultBoxes(){
         playerResult.innerHTML = '<img src="images/tick.jpg" alt="Tick">';
         computerResult.innerHTML = '<img src="images/x.png" alt="x">';
         round ++
+        playerRound ++
     }
     else if (result == 'lose'){
         playerResult.innerHTML = '<img src="images/x.png" alt="x">';
         computerResult.innerHTML = '<img src="images/tick.jpg" alt="tick">';
         round ++
+        computerRound ++
     }
 }
 
-// function updateGameStats(){
+function resetRound() {
+    playerRound = 0
+    computerRound = 0
+    round = 1
+    for (let i = 1; i <= ROUNDS; i++){
+        const resetPlayer = document.querySelector('.player-side .result-boxes .result-box-' + i)
+        const resetComputer = document.querySelector('.computer-side .result-boxes .result-box-' + i)
+        resetPlayer.textContent = ''
+        resetComputer.textContent = ''
+    }
+
+}
+
+function updateGameStats(){
+    if (playerRound == 2){
+        playerScore ++
+        resetRound()
+    }
+    else if (computerRound == 2){
+        computerScore ++
+        resetRound()
+    }
+
+    const displayPlayerScore = document.querySelector('.player-side .side-text')
+    displayPlayerScore.textContent = playerScore
     
-// }
+    const displayComputerSide = document.querySelector('.computer-side .side-text')
+    displayComputerSide.textContent = computerScore
+}
 
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
     const clickedOption = e.target.closest('.option')
@@ -92,5 +126,17 @@ possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click
         playerAttributes()
         computerAttributes()
         updateResultBoxes()
+        updateGameStats()
+      
+
+        console.log("Player round: " + playerRound)
+        console.log("Computer round: " + computerRound)
+        console.log("Round: " + round)
+        console.log("------------------------------")
+        console.log("Player score: " + playerScore)
+        console.log("Computer score: " + computerScore)
+        console.log("------------------------------")
+        console.log("------------------------------")
+
     }
 }))
