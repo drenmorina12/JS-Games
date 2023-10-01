@@ -7,6 +7,8 @@ let playerColor
 let result
 let computerChoice
 let computerColor
+let gameScore
+let round = 1
 
 
 function playerAttributes() {
@@ -58,6 +60,26 @@ function getResult() {
         result = "lose"
 }
 
+function updateResultBoxes(){
+    const playerResult = document.querySelector('.player-side .result-boxes .result-box-' + round)
+    const computerResult = document.querySelector('.computer-side .result-boxes .result-box-' + round)
+
+    if (result == 'win'){
+        playerResult.innerHTML = '<img src="images/tick.jpg" alt="Tick">';
+        computerResult.innerHTML = '<img src="images/x.png" alt="x">';
+        round ++
+    }
+    else if (result == 'lose'){
+        playerResult.innerHTML = '<img src="images/x.png" alt="x">';
+        computerResult.innerHTML = '<img src="images/tick.jpg" alt="tick">';
+        round ++
+    }
+}
+
+// function updateGameStats(){
+    
+// }
+
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
     const clickedOption = e.target.closest('.option')
 
@@ -69,5 +91,6 @@ possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click
         colorDistinction()
         playerAttributes()
         computerAttributes()
+        updateResultBoxes()
     }
 }))
