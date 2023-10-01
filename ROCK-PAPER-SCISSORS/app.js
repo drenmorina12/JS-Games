@@ -94,8 +94,7 @@ function resetRound() {
         resetPlayer.textContent = ''
         resetComputer.textContent = ''
     }
-
-}
+}   
 
 function updateGameStats(){
     if (playerRound == 2){
@@ -125,18 +124,7 @@ possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click
         colorDistinction()
         playerAttributes()
         computerAttributes()
-        updateResultBoxes()
         updateGameStats()
-      
-
-        console.log("Player round: " + playerRound)
-        console.log("Computer round: " + computerRound)
-        console.log("Round: " + round)
-        console.log("------------------------------")
-        console.log("Player score: " + playerScore)
-        console.log("Computer score: " + computerScore)
-        console.log("------------------------------")
-        console.log("------------------------------")
-
+        updateResultBoxes()
     }
 }))
