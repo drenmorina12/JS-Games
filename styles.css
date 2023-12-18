@@ -1,168 +1,167 @@
 body {
-    margin: 0;
-    min-height: 100vh;
+  margin: 0;
+  min-height: 100vh;
 }
 
 .first {
-background-color: #1F2937;
-color: #F9FAF8;
-display: flex;
-flex-direction: column;
-padding: 20px 180px 120px 180px;
+  background-color: #1f2937;
+  color: #f9faf8;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 180px 120px 180px;
 }
 
 .header {
-display: flex;
-justify-content: space-between;
-align-items: center;  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header-logo {
-font-size: 24px;
-margin: 0;
+  font-size: 24px;
+  margin: 0;
 }
 
 .header-links {
-list-style-type: none;
-display: flex;
-gap: 16px;
-margin: 0;
+  list-style-type: none;
+  display: flex;
+  gap: 16px;
+  margin: 0;
 }
 
 a {
-text-decoration: none;
-color: #e5e7eb;
+  text-decoration: none;
+  color: #e5e7eb;
 }
 
 .content {
-display: flex;
-margin-top: 100px;
-max-height: 320px;
-gap: 35px;
-flex: 1;
+  display: flex;
+  margin-top: 100px;
+  max-height: 320px;
+  gap: 35px;
+  flex: 1;
 }
 
 .main-text {
-font-size: 48px;
-font-weight: bold;
-margin: 0;
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0;
 }
 
-.secondary-text{
-color: #e5e7eb;
+.secondary-text {
+  color: #e5e7eb;
 }
 
 img {
-max-height: 100%;
-max-width: auto;
+  max-height: 100%;
+  max-width: auto;
 }
 
 .sign-up {
-color: white;
-background-color: #3882f6;
-border: none;
-padding: 5px 20px;
-border-radius: 5px;
-cursor: pointer;  
+  color: white;
+  background-color: #3882f6;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .second {
-	margin: 100px;
+  margin: 100px;
 }
 
 .second-section-info {
-text-align: center;
-margin-top: 40px;
+  text-align: center;
+  margin-top: 40px;
 }
 
 .content-info {
-display: flex;
-gap: 100px;
-justify-content: center;
-margin: 40px 0 80px 0;
-flex-wrap: wrap;
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+  margin: 40px 0 80px 0;
+  flex-wrap: wrap;
 }
 
 .game {
-	width: 300px;
-	height: 300px;
-	border: solid black 1px;
+  width: 300px;
+  height: 300px;
+  border: solid black 1px;
 }
 
 .square-img {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .game-title {
-	text-align: center;
+  text-align: center;
 }
 
 .third {
-background-color: #e5e7eb;
-text-align: right;
-padding: 80px 160px 60px;
+  background-color: #e5e7eb;
+  text-align: right;
+  padding: 80px 160px 60px;
 }
 
 .quote {
-font-size: 30px;
-font-style: italic;
-color: #1F2937;
-text-align: justify;
+  font-size: 30px;
+  font-style: italic;
+  color: #1f2937;
+  text-align: justify;
 }
 
 .author {
-font-weight: bold;
-font-size: 20px;
-margin: 0;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0;
 }
 
 .sign-up-section {
-background-color: #3882f6;
-color: white;
-margin: 70px 140px;
-display: flex;
-justify-content: space-around;
-align-items: center;
-padding: 20px 0px;
-border-radius: 5px;
-} 
+  background-color: #3882f6;
+  color: white;
+  margin: 70px 140px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0px;
+  border-radius: 5px;
+}
 
 .sign-title {
-font-weight: bold;
-font-size: 20px;
-margin: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 5px;
 }
 
 .sign-description {
-font-size: 18px;
-margin: 5px;
+  font-size: 18px;
+  margin: 5px;
 }
 
-.sign-button{
-background-color: #3882f6;
-color: white;
-border-style: solid;
-border-color: white;
-border-width: 1px;
-padding: 8.5px 25px;
-border-radius: 5px;
-cursor: pointer;
-transition: 
-    opacity 0.15s;
+.sign-button {
+  background-color: #3882f6;
+  color: white;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  padding: 8.5px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: opacity 0.15s;
 }
 
 .sign-button:hover {
-opacity: 0.6;
+  opacity: 0.6;
 }
 
 .sign-button:active {
-opacity: 0.35;
+  opacity: 0.35;
 }
 
 .footer {
-background-color: #1F2937;
-color: #F9FAF8;
-text-align: center;
-padding: 18px;
+  background-color: #1f2937;
+  color: #f9faf8;
+  text-align: center;
+  padding: 18px;
 }
